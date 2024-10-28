@@ -17,4 +17,4 @@ class NetworkAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = "__all__"
+    list_display = ('name', 'model', 'release_date',)
