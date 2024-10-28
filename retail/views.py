@@ -3,11 +3,14 @@ from rest_framework.viewsets import ModelViewSet
 
 from retail.models import Network, Contacts, Product
 from retail.serializers import NetworkSerializer, ContactsSerializer, ProductSerializer
+from users.permissions import IsActive
 
 
 class NetworkViewSet(ModelViewSet):
     queryset = Network.objects.all()
     serializer_class = NetworkSerializer
+    filterset_fields = ['country',]
+    permission_classes = [IsActive]
 
 
 class ContactsCreateAPIView(CreateAPIView):
@@ -18,6 +21,7 @@ class ContactsCreateAPIView(CreateAPIView):
 class ContactsListAPIView(ListAPIView):
     queryset = Contacts.objects.all()
     serializer_class = ContactsSerializer
+    filterset_fields = ['city',]
 
 
 class ContactsRetrieveAPIView(RetrieveAPIView):
@@ -33,8 +37,6 @@ class ContactsUpdateAPIView(UpdateAPIView):
 class ContactsDestroyAPIView(DestroyAPIView):
     queryset = Contacts.objects.all()
     serializer_class = ContactsSerializer
-
-
 
 
 class ProductCreateAPIView(CreateAPIView):
