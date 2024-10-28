@@ -6,13 +6,21 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('retail', '0002_alter_network_product'),
+        ("retail", "0002_alter_network_product"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='network',
-            name='level',
-            field=models.IntegerField(choices=[(0, 'Завод'), (1, 'розничная сеть'), (2, 'индивидуальный предприниматель')], default=0, verbose_name='Уровень иерархии'),
+            model_name="network",
+            name="level",
+            field=models.IntegerField(
+                choices=[
+                    (0, "Завод"),
+                    (1, "розничная сеть"),
+                    (2, "индивидуальный предприниматель"),
+                ],
+                default=0,
+                verbose_name="Уровень иерархии",
+            ),
         ),
     ]
